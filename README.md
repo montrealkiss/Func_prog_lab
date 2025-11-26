@@ -101,7 +101,7 @@ passed... test 6
 passed... test 7
 NIL
 ```
-## Лістинг функції list-set-intersect-p:
+## Лістинг предикату list-set-intersect-p:
 ```lisp
 (defun atom-in-set-p (item set)
   (cond
