@@ -101,3 +101,49 @@ passed... test 6
 passed... test 7
 NIL
 ```
+## Лістинг функції list-set-intersect-p:
+```lisp
+(defun atom-in-set-p (item set)
+  (cond
+    ((null set) nil)
+    ((equal item (car set)) t)
+    (t (atom-in-set-p item (cdr set)))))
+
+(defun list-set-intersect-p (set1 set2)
+  (cond
+    ((or (null set1) (null set2)) nil)
+    ((atom-in-set-p (car set1) set2) t)
+    (t (list-set-intersect-p (cdr set1) set2))))
+```
+### Тестові набори
+```lisp
+(defun check-list-set-intersect-p (name set1 set2 expected)
+  (format t "~:[FAILED~;passed~]... ~a~%"
+          (equal (list-set-intersect-p set1 set2) expected)
+          name))
+
+(defun test-list-set-intersect-p ()
+  (check-list-set-intersect-p "test 1" '(1 2 3) '(4 5 6) nil)
+  (check-list-set-intersect-p "test 2" '(1 2 3) '(3 4 5) t)
+  (check-list-set-intersect-p "test 3" nil nil nil)
+  (check-list-set-intersect-p "test 4" '(1 2 3) nil nil)
+  (check-list-set-intersect-p "test 5" nil '(1 2 3) nil)
+  (check-list-set-intersect-p "test 6" '(a b c) '(a x y) t)
+  (check-list-set-intersect-p "test 7" '(1 2 3) '(9 8 3) t)
+  (check-list-set-intersect-p "test 8" '(1 2 "x") '(a b c) nil)
+  (check-list-set-intersect-p "test 9" '("x" "y") '("z" "x" "w") t))
+```
+### Тестування
+```
+(test-list-set-intersect-p)
+passed... test 1
+passed... test 2
+passed... test 3
+passed... test 4
+passed... test 5
+passed... test 6
+passed... test 7
+passed... test 8
+passed... test 9
+NIL
+```
