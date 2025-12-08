@@ -174,16 +174,19 @@ NIL
 
 1.
 ```
-(set 'second-list '(4 E F))
+(setq tail (list 'F))
 ```
 Результат:
 ```
-(4 E F)
+(F)
 ```
 
 2.
 ```
-(list 'd second-list '(5) (third second-list))
+(setq func 
+      (cons 'D 
+            (cons (cons 4 (cons 'E tail))  
+                  (cons (list 5) tail))))  
 ```
 Результат:
 ```
