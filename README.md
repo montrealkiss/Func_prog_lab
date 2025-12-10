@@ -64,9 +64,17 @@
   (check-sort "test 4" '((3 "c") (1 "a") (2 "b")) '((1 "a") (2 "b") (3 "c")) :key #'car)
   (check-sort "test 5" '("apple" "pie" "banana" "a") '("a" "pie" "apple" "banana") :key #'length)
   (check-sort "test 6" '(12 35 49) '(49 35 12) :key (lambda (x) (mod x 10)) :test #'>))
+```
 ### Тестування першої частини завдання
 ```lisp
-
+(test-sort)
+passed... test 1 (Functional)
+passed... test 2 (Functional)
+passed... test 3 (Functional)
+passed... test 4 (Functional)
+passed... test 5 (Functional)
+passed... test 6 (Functional)
+NIL
 ```
 ## Варіант другої частини 9(21):
 Написати функцію duplicate-elements-fn, яка має один основний параметр n та один ключовий параметр — функцію duplicate-p. duplicate-elements-fn має повернути функцію, яка при застосуванні в якості першого аргументу mapcan робить наступне: кожен елемент списка-аргумента mapcan, для якого функція duplicate-p повертає значення t (або не nil), дублюється n разів. Якщо користувач не передав функцію duplicate-p у duplicate-elements-fn , тоді дублюються всі елементи вхідного списку.
@@ -103,5 +111,10 @@ CL-USER> (mapcan (duplicate-elements-fn 2 :duplicate-p #'evenp) '(1 2 3 4 5))
 ```
 ### Тестування другої частини завдання
 ```lisp
-
+(test-duplicate)
+passed... test 1
+passed... test 2
+passed... test 4
+passed... test 5
+NIL
 ```
