@@ -75,9 +75,7 @@
   (when records
     (let ((headers (mapcar #'car (first records))))
       (with-open-file (stream file-path :direction :output :if-exists :supersede)
-        ;; Записуємо заголовки
         (format stream "~{~A~^,~}~%" headers)
-        ;; Записуємо рядки
         (dolist (rec records)
           (format stream "~A~%" (alist-to-csv-row rec headers)))))))
 
