@@ -1,194 +1,194 @@
  <p align="center"><b>МОНУ НТУУ КПІ ім. Ігоря Сікорського ФПМ СПіСКС</b></p>
  <p align="center">
- <b>Звіт з лабораторної роботи 1</b><br/>
- "Обробка списків з використанням базових функцій"<br/>
+ <b>Звіт з лабораторної роботи 5</b><br/>
+ "Робота з базою даних"<br/>
  дисципліни "Вступ до функціонального програмування"
  </p>
  <p align="right"><b>Студент</b>: Юдін Дмитро Олексійович КВ-21</p>
  <p align="right"><b>Рік</b>: 2025</p>
  
-### Загальне завдання
- 
-####  1. Створіть список з п'яти елементів, використовуючи функції LIST і CONS. Форма створення списку має бути одна — використання SET чи SETQ  (або інших допоміжних форм) для збереження проміжних значень не допускається. Загальна кількість елементів (включно з підсписками та їх елементами) не має перевищувати 10-12 шт. (дуже великий список робити не потрібно). Збережіть створений список у якусь змінну з SET або SETQ. Список має містити (напряму або у підсписках):
-- хоча б один символ
-- хоча б одне число
-- хоча б один не пустий підсписок
-- хоча б один пустий підсписок
-```
-(setq my-list (list 'a
-              1
-              (cons 'a nil)
-              ()
-              '(b 1)))
-```
-Результат:
-```
-(A 1 (A) NIL (B 1))
-```
-####  2. Отримайте голову списку.
-```
-(car my-list)
-```
-Результат:
-```
-A
-```
-####  3. Отримайте хвіст списку.
-```
-(cdr my-list)
-```
-Результат:
-```
-(1 (A) NIL (B 1))
-```
-####  4. Отримайте третій елемент списку.
-```
-(car (cdr (cdr my-list)))
-```
-Результат:
-```
-(A) 
-```
-####  5. Отримайте останній елемент списку.
-```
-(car (last my-list))
-```
-Результат:
-```
-(B 1) 
-```
-####  6. Використайте предикати ATOM та LISTP на різних елементах списку (по 2-3 приклади для кожної функції).
-1. Використання ATOM.
-Перевірка чи є атомом другий елемент my-list(1):
-```
-(atom (car (cdr my-list)))
-```
-Результат:
-```
-T
-```
-Перевірка чи є атомом четвертий елемент my-list(NIL):
-```
-(atom (car (cdr (cdr (cdr my-list)))))
-```
-Результат:
-```
-T
-```
-Перевірка чи є атомом останній елемент my-list((B 1)):
-```
-(atom (car (last my-list)))
-```
-Результат:
-```
-NIL
-```
-2. Використання LISTP.
-Перевірка чи є списком третій елемент my-list((A)):
-```
-(listp (third my-list))
-```
-Результат:
-```
-T
-```
-Перевірка чи є списком четвертий елемент my-list(NIL):
-```
-(listp (caddr my-list))
-```
-Результат:
-```
-T
-```
-Перевірка чи є списком перший елемент my-list(A):
-```
-(listp (car my-list))
-```
-Результат:
-```
-NIL
-```
-####  7. Використайте на елементах списку 2-3 інших предикати з розглянутих у розділі 4 навчального посібника.
-Порівняння одного списку((B 1)):
-```
-(equal (last my-list) (last my-list))
-```
-Результат:
-```
-T
-```
-Порівняння різних списків((B 1) та (A)):
-```
-(equal (cddr my-list) (last my-list))
-```
-Результат:
-```
-NIL
-```
-Перевірка, чи є другий аргумент числом(1):
-```
-(numberp (cadr my-list))
-```
-Результат:
-```
-T
-```
-Перевірка, чи є перший аргумент числом(A):
-```
-(numberp (car my-list))
-```
-Результат:
-```
-NIL
-```
-Перевірка на додатній знак числа (1) в підсписку ((B 1)):
-```
-(plusp (second (car (last my-list))))
-```
-Результат:
-```
-T
-```
-Перевірка на від'ємний знак числа (1) в підсписку ((B 1)):
-```
-(minusp (second (car (last my-list))))
-```
-Результат:
-```
-NIL
-```
-####  8. Об'єднайте створений список з одним із його непустих підсписків. Для цього використайте функцію APPEND:
-```
-(append my-list (car (last my-list)))
-```
-Результат:
-```
- (A 1 (A) NIL (B 1) B 1)
-```
-### Варіант 5(21):
-<p align="center">
- <img src="5_var.jpg">
-</p>
-Створіть список, що відповідає структурі списку, наведеній на рисунку (за варіантом).
-Для цього допускається використання не більше двох форм  конструювання списку на "верхньому рівні". Але аргументами цих форм можуть бути результати інших викликів форм конструювання списків. 
+## Загальне завдання
+В роботі необхідно реалізувати утиліти для роботи з базою даних, заданою за варіантом (п. 5.1.1). База даних складається з кількох таблиць. Таблиці представлені у вигляді CSV файлів. При зчитуванні записів з таблиць, кожен запис має бути представлений певним типом в залежності від варіанту: структурою, асоціативним списком або геш-таблицею.
+1. Визначити структури та/або утиліти для створення записів з таблиць (в залежності від типу записів, заданого варіантом).
+2. Розробити утиліту(-и) для зчитування таблиць з файлів. Значення колонок мають бути розібрані відповідно до типу даних у них. Наприклад, рядок — це просто рядок; числові колонки необхідно розібрати як цілі числа або числа з рухомою крапкою.
+3. Розробити функцію select , яка отримує на вхід шлях до файлу з таблицею, а також якийсь об'єкт, який дасть змогу зчитати записи конкретного типу або структури. Це може бути ключ, список з якоюсь допоміжною інформацією, функція і т. і. За потреби параметрів може бути кілька. select повертає лямбда-вираз, який, в разі виклику, виконує "вибірку" записів з таблиці, шлях до якої було передано у select . При цьому лямбда-вираз в якості ключових параметрів може отримати на вхід значення полів записів таблиці, для того щоб обмежити вибірку лише заданими значеннями (виконати фільтрування). Вибірка повертається у вигляді списку записів.
+4. Написати утиліту(-и) для запису вибірки (списку записів) у файл.
+5. Написати функції для конвертування записів у інший тип (в залежності від варіанту):
+- структури у геш-таблиці
+- геш-таблиці у асоціативні списки
+- асоціативні списки у геш-таблиці
+6. Написати функцію(-ї) для "красивого" виводу записів таблиці (pretty-print).
 
-1.
-```
-(setq tail (list 'F))
-```
-Результат:
-```
-(F)
+## Варіант 9(21):
+База даних: наукові статті.
+Тип записів: асоціативний список.
+
+## Лістинг реалізації завдання
+```lisp
+(defun split-string (string delimiter)
+  (loop for i = 0 then (1+ j)
+        as j = (position delimiter string :start i)
+        collect (subseq string i j)
+        while j))
+
+(defun parse-value (str)
+  (let ((val (ignore-errors (parse-integer str))))
+    (or val str)))
+
+(defun row-to-alist (headers row)
+  (loop for key in headers
+        for val in row
+        collect (cons key (parse-value (string-trim " " val)))))
+
+(defun read-csv (file-path)
+  (with-open-file (stream file-path :direction :input)
+    (let* ((header-line (read-line stream nil))
+           (headers (when header-line
+                      (mapcar (lambda (s) (intern (string-upcase (string-trim " " s)) :keyword))
+                              (split-string header-line #\,))))
+           (records '()))
+      (loop for line = (read-line stream nil)
+            while line
+            do (let ((row (split-string line #\,)))
+                 (push (row-to-alist headers row) records)))
+      (nreverse records))))
+
+(defun select (file-path)
+  (let ((records (read-csv file-path)))
+    (lambda (&rest filters &key &allow-other-keys)
+      (if (null filters)
+          records
+          (remove-if-not
+           (lambda (record)
+             (loop for (key value) on filters by #'cddr
+                   always (equal (cdr (assoc key record)) value)))
+           records)))))
+
+(defun alist-to-csv-row (record headers)
+  (format nil "~{~A~^,~}"
+          (mapcar (lambda (key)
+                    (let ((val (cdr (assoc key record))))
+                      (if (numberp val) val (format nil "~A" val))))
+                  headers)))
+
+(defun save-records (file-path records)
+  (when records
+    (let ((headers (mapcar #'car (first records))))
+      (with-open-file (stream file-path :direction :output :if-exists :supersede)
+        ;; Записуємо заголовки
+        (format stream "~{~A~^,~}~%" headers)
+        ;; Записуємо рядки
+        (dolist (rec records)
+          (format stream "~A~%" (alist-to-csv-row rec headers)))))))
+
+(defun alist-to-hash-table (alist)
+  (let ((ht (make-hash-table :test 'equal)))
+    (dolist (pair alist)
+      (setf (gethash (car pair) ht) (cdr pair)))
+    ht))
+
+(defun convert-all-to-hash (records)
+  (mapcar #'alist-to-hash-table records))
+
+(defun pretty-print (records)
+  (when records
+    (let* ((headers (mapcar #'car (first records)))
+           (col-widths (mapcar (lambda (h) (length (string h))) headers)))
+      (dolist (rec records)
+        (loop for key in headers
+              for i from 0
+              do (setf (nth i col-widths)
+                       (max (nth i col-widths)
+                            (length (format nil "~A" (cdr (assoc key rec))))))))
+
+      (format t "~&|")
+      (loop for h in headers
+            for w in col-widths
+            do (format t " ~vA |" w h))
+      (format t "~%")
+      
+      (format t "|")
+      (loop for w in col-widths
+            do (format t "~v@{~A~:*~}|" (+ w 2) "-"))
+      (format t "~%")
+
+      (dolist (rec records)
+        (format t "|")
+        (loop for h in headers
+              for w in col-widths
+              do (format t " ~vA |" w (cdr (assoc h rec))))
+        (format t "~%")))))
 ```
 
-2.
+### Тестові набори та утиліти
+```lisp
+(defun create-test-files ()
+  (with-open-file (s "specialties.csv" :direction :output :if-exists :supersede)
+    (format s "ID,NAME,FIELD~%")
+    (format s "1,Computer Science,IT~%")
+    (format s "2,Physics,Science~%")
+    (format s "3,Economics,Social"))
+  
+  (with-open-file (s "articles.csv" :direction :output :if-exists :supersede)
+    (format s "ID,SPECIALTY-ID,TITLE,AUTHOR,YEAR~%")
+    (format s "101,1,AI Algorithms,John Doe,2023~%")
+    (format s "102,1,Lisp Programming,Jane Smith,2024~%")
+    (format s "103,2,Quantum Mechanics,Albert E.,1920~%")
+    (format s "104,3,Market Trends,Adam S.,2022~%")))
+
+(defun demo ()
+  (create-test-files)
+  
+  (let ((articles-db (select "articles.csv")))
+    
+    (format t "~%1. Всі статті:~%")
+    (pretty-print (funcall articles-db))
+    
+    (format t "~%2. Статті за 2024 рік:~%")
+    (pretty-print (funcall articles-db :year 2024))
+    
+    (format t "~%3. Статті зі SPECIALTY-ID = 1 (Computer Science):~%")
+    (let ((cs-articles (funcall articles-db :specialty-id 1)))
+      (pretty-print cs-articles)
+
+      (format t "~%4. Конвертація першого знайденого запису у Hash Table:~%")
+      (let ((ht (alist-to-hash-table (first cs-articles))))
+        (maphash (lambda (k v) (format t "Key: ~A, Value: ~A~%" k v)) ht))
+      
+      (save-records "filtered_articles.csv" cs-articles)
+      (format t "~%Результат фільтрації збережено у 'filtered_articles.csv'~%"))))
+
+(demo)
 ```
-(setq func 
-      (cons 'D 
-            (cons (cons 4 (cons 'E tail))  
-                  (cons (list 5) tail))))  
+
+### Тестування 
+```lisp
+1. Всі статті:
+| ID  | SPECIALTY-ID | TITLE             | AUTHOR     | YEAR |
+|-----|--------------|-------------------|------------|------|
+| 101 | 1            | AI Algorithms     | John Doe   | 2023 |
+| 102 | 1            | Lisp Programming  | Jane Smith | 2024 |
+| 103 | 2            | Quantum Mechanics | Albert E.  | 1920 |
+| 104 | 3            | Market Trends     | Adam S.    | 2022 |
+
+2. Статті за 2024 рік:
+| ID  | SPECIALTY-ID | TITLE            | AUTHOR     | YEAR |
+|-----|--------------|------------------|------------|------|
+| 102 | 1            | Lisp Programming | Jane Smith | 2024 |
+
+3. Статті зі SPECIALTY-ID = 1 (Computer Science):
+| ID  | SPECIALTY-ID | TITLE            | AUTHOR     | YEAR |
+|-----|--------------|------------------|------------|------|
+| 101 | 1            | AI Algorithms    | John Doe   | 2023 |
+| 102 | 1            | Lisp Programming | Jane Smith | 2024 |
+
+4. Конвертація першого знайденого запису у Hash Table:
+Key: ID, Value: 101
+Key: SPECIALTY-ID, Value: 1
+Key: TITLE, Value: AI Algorithms
+Key: AUTHOR, Value: John Doe
+Key: YEAR, Value: 2023
+
+Результат фільтрації збережено у 'filtered_articles.csv'
 ```
-Результат:
-```
-(D (4 E F) (5) F)
-```
+
